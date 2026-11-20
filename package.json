@@ -1,0 +1,13 @@
+{
+  "name":"lr3-ode-numerical-methods",
+  "version":"1.0.0",
+  "private":true,
+  "type":"module",
+  "description":"ЛР №3. Задача Коші: Ейлер, Хойн, Рунге-Кутта IV, варіант 1",
+  "scripts":{
+    "start":"python3 -m http.server 8000",
+    "test":"node --test tests/*.test.js",
+    "analyze":"node scripts/benchmarks.mjs"
+  },
+  "engines":{"node":">=20"}
+}

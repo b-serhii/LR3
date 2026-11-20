@@ -1,0 +1,372 @@
+<!doctype html><html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#F7F9FD"><title>ЛР № 3 · Чисельні методи ОДУ</title><style>:root{--bg:#F6F8FC;--card:#fff;--ink:#203451;--muted:#7B8BA1;--border:#E1E7EF;--blue:#8066D9;--mint:#169CA1;--orange:#EA865B;--dark:#1F3151;--shadow:0 8px 36px #34476208}*{box-sizing:border-box}html{scroll-behavior:smooth}body{background:var(--bg);color:var(--ink);margin:0;font:14px/1.55 -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #B9A8FF;outline-offset:2px}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--border)}.topbar-content{max-width:1320px;height:100%;margin:auto;padding:0 24px;display:flex;align-items:center;gap:12px}.symbol{display:grid;place-items:center;width:43px;height:43px;border-radius:12px;background:var(--dark);font-size:23px;font-weight:800;color:white}.brand{display:flex;flex-direction:column;line-height:1.4}.brand strong{font-size:16px}.brand small{color:var(--muted);font-size:11px}.spacer{flex:1}.user-tag{border:1px solid var(--border);border-radius:18px;background:#F4F6FA;color:#63718B;padding:7px 13px;font-size:11px;font-weight:650}.shell{max-width:1320px;margin:auto;padding:33px 24px 20px}.eyebrow,.section-kicker{font-size:10px;letter-spacing:2px;font-weight:800;color:var(--blue);margin:0 0 7px}.intro h1{font-size:32px;letter-spacing:-.8px;margin:0;font-weight:800;line-height:1.28}.intro p:last-child{font-size:13px;color:var(--muted);margin:10px 0 23px}.banner{display:flex;align-items:center;gap:14px;border:1px solid #E4DFFB;background:#F4F1FF;padding:15px 18px;border-radius:12px;margin-bottom:18px}.banner-icon{display:grid;place-items:center;border-radius:11px;background:#E8E1FF;color:#7156C9;font-size:28px;width:42px;height:42px}.banner strong{font-size:14px}.banner p{color:#736B91;margin:2px 0 0;font-size:12px}.banner-right{margin-left:auto;border-radius:14px;background:white;color:#6E56B8;font-size:11px;font-weight:700;padding:7px 11px;white-space:nowrap}.panel,.metric,.mini-card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow)}.controls{display:flex;align-items:end;flex-wrap:wrap;gap:20px;padding:17px 20px}.control{display:flex;flex-direction:column;gap:8px}.control>label,.field>label{font-size:11px;color:#64748B;font-weight:750}.controls-btn{margin-left:auto}.segmented{display:flex;gap:3px;background:#F0F3F9;padding:4px;border-radius:9px}.seg{font-size:12px;min-width:51px;height:34px;padding:0 12px;border:0;border-radius:6px;background:transparent;color:#73839B;font-weight:750}.seg.active{color:var(--blue);background:white;box-shadow:0 2px 7px #34476216}.row-btn{display:flex;gap:7px;align-items:center;flex-wrap:wrap}.button{padding:10px 14px;border:1px solid transparent;border-radius:8px;font-weight:750;font-size:12px;white-space:nowrap;line-height:1.3;cursor:pointer}.button.primary{background:var(--blue);color:white}.button.secondary{background:#F5F2FF;color:#6750B9;border-color:#E7DFFB}.button.warning{background:#FFF2EB;color:#AC6339;border-color:#F6DCCB}.button.text-button{background:none;border:0;color:#6D56C2}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}.metric{padding:18px;display:flex;flex-direction:column;gap:4px}.metric span{font-size:11px;color:#7B8A9F;font-weight:700}.metric strong{font-size:26px;line-height:1.3;letter-spacing:-.6px}.metric small{color:#A0AEC2;font-size:10px}.main-panel,.settings,.tables-grid .panel,.shell>section.panel{padding:22px 24px;margin-bottom:18px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:14px}.panel-head h2,.section-head h2{margin:0;font-size:20px;line-height:1.35;letter-spacing:-.35px}.panel-head .section-kicker{margin-bottom:4px}.subtle{color:#8492A8;font-size:12px;line-height:1.6;margin:5px 0}.soft-tag{background:#F2F4F9;color:#8390A4;padding:7px 12px;border-radius:16px;font-size:11px;white-space:nowrap}.graph-container,.mini-graph{width:100%;margin:12px 0 0}.graph-svg{display:block;width:100%;height:auto;overflow:visible}.tick{font:12px -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;fill:#8394AB}.axis{font:700 12px -apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;fill:#69788E}.legend{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:12px 0}.legend span{font-size:11px;color:#617089;display:flex;align-items:center;gap:7px}.line{display:inline-block;border-top:3px solid;width:21px}.line.exact{border-top:3px dashed var(--dark)}.line.euler{border-color:var(--orange)}.line.heun{border-color:var(--mint)}.line.rk4{border-color:var(--blue)}.stage-panel{margin-top:12px;padding:13px 17px;background:#F9F7FF;border:1px solid #E6DEF9;border-radius:9px;display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:#61548A}.stage-panel[hidden]{display:none}.stage-panel strong{margin-right:10px}.plot-note{border-top:1px solid var(--border);padding-top:12px;margin:15px 0 0;text-align:center;font-size:11px;color:#9BA8B9}.section-head{margin:28px 0 16px;display:flex;justify-content:space-between;align-items:center;gap:15px}.section-head p:last-child{margin:6px 0 0;color:var(--muted);font-size:12px}.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.mini-card{min-width:0;padding:15px 16px 8px}.mini-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.mini-label{font-size:13px;font-weight:750}.mini-head strong{font-size:11px;color:#8493AB}.tables-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:21px}.tables-grid .panel{min-width:0}.table-scroll{overflow:auto;margin-top:14px}table{width:100%;border-collapse:collapse;font-size:11px;font-variant-numeric:tabular-nums}th{background:#F4F6FA;color:#8191A9;padding:11px 10px;text-align:left;font-weight:750;white-space:nowrap}td{border-bottom:1px solid var(--border);padding:11px 10px;font-weight:650;white-space:nowrap}tbody tr.selected td{background:#F4F0FF;color:#6654B4}.footnote{margin-top:14px!important}.field-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:17px}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field-wide{grid-column:span 3}.field input:not([type=checkbox]){height:40px;background:#FCFDFF;border:1px solid var(--border);border-radius:8px;padding:0 13px;color:var(--ink)}.field small{font-size:10px;color:#93A0B1}.field .checkbox{display:flex;align-items:center;gap:8px;font-size:11px;color:#8796AA;font-weight:500}.settings-foot{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px}.upload{display:inline-block}.form-error{color:#BB3C44;font-size:12px}.notice{padding:12px 15px;background:#FFF5E8;border:1px solid #EECF9B;border-radius:9px;margin-top:14px;color:#815A30;font-size:12px}.empty-state{background:#FAFAFC;min-height:210px;display:grid;place-items:center;font-size:12px;color:var(--muted);text-align:center;padding:20px}footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:#A1ADBD;font-size:11px;padding:22px 0 4px}@media(max-width:1100px){.controls-btn{margin-left:0}.tables-grid{grid-template-columns:1fr}.metrics{grid-template-columns:repeat(2,1fr)}}@media(max-width:670px){.topbar-content{padding:0 12px}.brand strong{font-size:13px}.user-tag{display:none}.shell{padding:22px 12px}.intro h1{font-size:25px}.banner{padding:12px;gap:9px}.banner p{font-size:11px}.banner-right{display:none}.controls{padding:14px}.control{width:100%}.control .segmented{width:100%}.seg{flex:1;padding:0 5px}.panel-head h2,.section-head h2{font-size:17px}.metrics{gap:9px}.metric{padding:13px}.metric strong{font-size:21px}.main-panel,.settings,.tables-grid .panel,.shell>section.panel{padding:15px}.mini-grid{grid-template-columns:1fr}.field-grid{grid-template-columns:1fr}.field-wide{grid-column:auto}.section-head{align-items:start}.soft-tag{font-size:10px}.legend{gap:9px}.legend span{font-size:10px}footer{flex-direction:column}}
+</style></head>
+<body>
+<header class="topbar"><div class="topbar-content"><div class="symbol">y′</div><div class="brand"><strong>Лабораторна № 3</strong><small>Чисельні методи ОДУ · Задача Коші</small></div><span class="spacer"></span><span class="user-tag">Бойог Сергій Степанович · Варіант 1</span></div></header>
+<main class="shell">
+ <section class="intro"><p class="eyebrow">ІНТЕРАКТИВНА ЧИСЕЛЬНА ЛАБОРАТОРІЯ</p><h1>Розв'язання задачі Коші</h1><p>Порівняння методів Ейлера, Хойна та Рунге–Кутта 4-го порядку, аналіз точності й стійкості.</p></section>
+ <section class="banner"><div class="banner-icon">∫</div><div><strong>Варіант № 1</strong><p>y′ = y + eˣ, y(0) = 1 на [0; 1] · Аналітичний розв'язок: y = (x + 1)eˣ</p></div><span id="preset-label" class="banner-right">Варіант № 1</span></section>
+ <section class="panel controls"><div class="control"><label>Кількість кроків n</label><div class="segmented" role="group"><button data-n="5" class="seg active" aria-pressed="true">5</button><button data-n="10" class="seg" aria-pressed="false">10</button><button data-n="20" class="seg" aria-pressed="false">20</button></div></div><div class="control"><label>Відображення методу</label><div class="segmented" role="group"><button data-method="all" class="seg active" aria-pressed="true">Усі</button><button data-method="euler" class="seg" aria-pressed="false">Ейлер</button><button data-method="heun" class="seg" aria-pressed="false">Хойн</button><button data-method="rk4" class="seg" aria-pressed="false">РК4</button></div></div><div class="control controls-btn"><label>Покрокова анімація</label><div class="row-btn"><button class="button primary" id="animate">▶ Запустити</button><button class="button secondary" id="stop">■ Стоп</button></div></div></section>
+ <section class="metrics"><div class="metric"><span>Кроків</span><strong id="stat-n">5</strong><small>Обрана вибірка</small></div><div class="metric"><span>Довжина кроку h</span><strong id="stat-h">0,2</strong><small>(x₁ − x₀) / n</small></div><div class="metric"><span>Похибка Ейлера в кінці</span><strong id="stat-euler">—</strong><small>Абсолютне відхилення</small></div><div class="metric"><span>Похибка РК4 в кінці</span><strong id="stat-rk4">—</strong><small>Абсолютне відхилення</small></div></section>
+ <section class="panel main-panel"><div class="panel-head"><div><p class="section-kicker">ОСНОВНА ВІЗУАЛІЗАЦІЯ</p><h2 id="main-title">Основний графік · 5 кроків</h2><p id="formula-current" class="subtle">—</p></div><span id="animation-status" class="soft-tag">Готово до дослідження</span></div><div id="main-graph" class="graph-container"></div><div class="legend"><span><i class="line exact"></i> Точний</span><span><i class="line euler"></i> Ейлер</span><span><i class="line heun"></i> Хойн</span><span><i class="line rk4"></i> РК4</span></div><div id="stage-panel" class="stage-panel" hidden><strong id="stage-title">РК4</strong><div>k₁: <b id="stage-k1">—</b></div><div>k₂: <b id="stage-k2">—</b></div><div>k₃: <b id="stage-k3">—</b></div><div>k₄: <b id="stage-k4">—</b></div></div><p class="plot-note">Межі обох осей визначаються автоматично за видимими точками й кривими на кожному кадрі анімації.</p></section>
+ <section class="section-head"><div><p class="section-kicker">АНАЛІЗ ДЛЯ ТРЬОХ СІТОК</p><h2>Шість обов'язкових графіків</h2><p>Для кожного n: порівняння розв'язків і окремий графік абсолютних похибок.</p></div><span class="soft-tag">3 набори × 2 типи</span></section><section id="six-graphs" class="mini-grid"></section>
+ <section class="tables-grid"><article class="panel"><div class="panel-head"><div><p class="section-kicker">ЧИСЕЛЬНА ТОЧНІСТЬ</p><h2>Точність і час виконання</h2></div><button id="csv" class="button text-button">↓ CSV</button></div><div class="table-scroll"><table><thead><tr><th>Кроків</th><th>Метод</th><th>Макс. похибка</th><th>Кінцева</th><th>Час, мс*</th></tr></thead><tbody id="comparison-body"></tbody></table></div><p class="subtle footnote">*Медіана 25 локальних вимірювань; мілісекундні значення залежать від пристрою та браузера.</p></article><article class="panel"><div class="panel-head"><div><p class="section-kicker">ПОРЯДОК ТОЧНОСТІ</p><h2>Відношення похибок</h2></div></div><div class="table-scroll"><table><thead><tr><th>Метод</th><th>5 → 10</th><th>10 → 20</th><th>Теорія</th></tr></thead><tbody id="order-body"></tbody></table></div><p id="order-note" class="subtle footnote"></p></article></section>
+ <section class="panel settings"><div class="panel-head"><div><p class="section-kicker">НАЛАШТУВАННЯ ЕКСПЕРИМЕНТУ</p><h2>Вхідні параметри задачі</h2></div><div class="row-btn"><button id="preset-variant" class="button secondary">↺ Мій варіант</button><button id="preset-stability" class="button warning">⚡ Тест стійкості</button></div></div><div class="field-grid"><div class="field field-wide"><label for="fx">Права частина f(x, y)</label><input id="fx" value="y + exp(x)" spellcheck="false"><small>Синтаксис: y + exp(x), -20*y, x^2 - y. Без виконання довільного коду.</small></div><div class="field field-wide"><label for="exact">Аналітичний розв'язок y(x)</label><input id="exact" value="(x + 1) * exp(x)" spellcheck="false"><label class="checkbox"><input type="checkbox" id="exact-on" checked> Використовувати точний розв'язок для похибок</label></div><div class="field"><label for="x0">x₀</label><input type="number" id="x0" value="0" step="any"></div><div class="field"><label for="y0">y₀</label><input type="number" id="y0" value="1" step="any"></div><div class="field"><label for="xend">Кінець інтервалу</label><input type="number" id="xend" value="1" step="any"></div></div><div class="settings-foot"><button id="apply" class="button primary">Застосувати зміни →</button><button id="export-json" class="button secondary">↓ Зберегти JSON</button><label class="button secondary upload">↑ Завантажити JSON<input id="file-json" type="file" accept="application/json,.json" hidden></label><span id="form-error" class="form-error" role="alert"></span></div></section>
+ <section class="panel"><div class="panel-head"><div><p class="section-kicker">ОБОВ'ЯЗКОВА ПЕРЕВІРКА СТІЙКОСТІ</p><h2>Чому Ейлер може бути нестійким?</h2></div></div><p class="subtle">Для y′ = −20y, y(0)=1 на [0;1] множник одного кроку q = 1 − 20h. Якщо |q| &gt; 1, похибка зростає; q = −1 дає незгасаючі осциляції.</p><div class="table-scroll"><table><thead><tr><th>Кроків</th><th>h</th><th>Множник q</th><th>Значення y(1)</th><th>Поведінка</th></tr></thead><tbody id="stability-body"></tbody></table></div><div id="stability-note" class="notice" hidden>Зараз відкрито тест стійкості. Перемикай 5 / 10 / 20 кроків та дивись, як змінюється масштаб графіка.</div></section>
+ <section class="panel"><div class="panel-head"><div><p class="section-kicker">БОНУС · +10 БАЛІВ</p><h2>Модель «хижак–жертва»</h2></div><span id="phase-status" class="soft-tag">РК4</span></div><p class="subtle">Система Лотки–Вольтерри: u′ = 1,5u − uv, v′ = uv − 3v; u(0)=10, v(0)=5.</p><div id="phase-graph" class="graph-container"></div><p class="plot-note">Фазовий портрет: горизонтальна вісь — кількість жертв, вертикальна — кількість хижаків.</p></section>
+ <footer><span>Бойог Сергій Степанович · ІПЗ-4 · Лабораторна № 3</span><span>Strategy · Чисельні методи · JavaScript</span></footer>
+</main><script>
+/**
+ * Веблабораторія ОДУ №3, варіант №1. Чисте математичне ядро (ES-модулі).
+ * Strategy: кожний чисельний метод має незалежну реалізацію step(f,x,y,h).
+ * Додати метод = створити Strategy і зареєструвати в strategies; UI не змінюється.
+ */
+const EPS=1e-14;
+const VARIANT={name:'Варіант № 1',fText:'y + exp(x)',exactText:'(x + 1) * exp(x)',x0:0,y0:1,xEnd:1,expected(x){return (x+1)*Math.exp(x)}};
+const STABILITY={name:'Тест стійкості',fText:'-20*y',exactText:'exp(-20*x)',x0:0,y0:1,xEnd:1,expected(x){return Math.exp(-20*x)}};
+
+class EulerStrategy {
+  id='euler';name='Ейлер';order=1;
+  step(f,x,y,h){const k1=f(x,y);return {next:y+h*k1,stage:{k1}};}
+}
+class HeunStrategy {
+  id='heun';name='Хойн';order=2;
+  step(f,x,y,h){const k1=f(x,y), k2=f(x+h,y+h*k1);return {next:y+h*(k1+k2)/2,stage:{k1,k2}};}
+}
+class RK4Strategy {
+  id='rk4';name='Рунге–Кутта IV';order=4;
+  step(f,x,y,h){
+    const k1=f(x,y);
+    const k2=f(x+h/2,y+h*k1/2);
+    const k3=f(x+h/2,y+h*k2/2);
+    const k4=f(x+h,y+h*k3);
+    return {next:y+h*(k1+2*k2+2*k3+k4)/6,stage:{k1,k2,k3,k4}};
+  }
+}
+/** Методи реєструються через спільний протокол, а не if/else усередині solve. */
+const strategies={euler:new EulerStrategy(),heun:new HeunStrategy(),rk4:new RK4Strategy()};
+const methodNames=Object.fromEntries(Object.entries(strategies).map(([id,s])=>[id,s.name]));
+function validateProblem({f,exact,x0,y0,xEnd,n}){
+  if(typeof f!=='function')throw Error('Функція f(x,y) не задана.');
+  if(exact!==null && exact!==undefined && typeof exact!=='function')throw Error('Точний розв’язок має бути функцією.');
+  if (![x0,y0,xEnd].every(Number.isFinite))throw Error('Початкові дані мають бути скінченними.');
+  if (!(xEnd>x0))throw Error('Кінець інтервалу має бути більшим за початок.');
+  if(!Number.isInteger(n)||n<1||n>20000)throw Error('Кількість кроків має бути цілим числом від 1 до 20000.');
+}
+function solveODE(problem,strategy){
+  validateProblem(problem);
+  if(!strategy||typeof strategy.step!=='function')throw Error('Невідома стратегія розв’язання.');
+  const {f,exact=null,x0,y0,xEnd,n}=problem, h=(xEnd-x0)/n;
+  const nodes=[{i:0,x:x0,y:y0,error:exact?Math.abs(y0-exact(x0)):null}],stages=[];
+  let y=y0;
+  for(let i=0;i<n;i++){
+    const x=x0+i*h;
+    const {next,stage}=strategy.step(f,x,y,h);
+    if(!Number.isFinite(next)||!Object.values(stage||{}).every(Number.isFinite))throw Error(`Метод ${strategy.id}: переповнення на кроці ${i+1}.`);
+    if(Math.abs(next)>1e250)throw Error('Числове переповнення результату.');
+    const nextX=i===n-1?xEnd:x0+(i+1)*h;
+    const ey=exact?exact(nextX):null;
+    if(ey!==null&&!Number.isFinite(ey))throw Error('Точний розв’язок поза допустимим діапазоном.');
+    nodes.push({i:i+1,x:nextX,y:next,error:exact?Math.abs(ey-next):null});
+    stages.push({i:i+1,x,y,h,...stage});
+    y=next;
+  }
+  const errors=nodes.filter(p=>p.error!==null).map(p=>p.error);
+  const endError=errors.length?errors.at(-1):null;
+  return {id:strategy.id,method:strategy.name,order:strategy.order,h,n,nodes,stages,
+    maxError:errors.length?Math.max(...errors):null,endError};
+}
+function solveAll(problem){return Object.fromEntries(Object.entries(strategies).map(([key,strategy])=>[key,solveODE(problem,strategy)]));}
+function benchmark(problem,rep=30){
+  if(!Number.isInteger(rep)||rep<1)throw Error('Невірна кількість повторів.');
+  // Median of 30 trials reduces timer noise; performance.now() available in modern Node/browser.
+  const out={};
+  for(const [key,strategy] of Object.entries(strategies)){
+    const samples=[];let result;
+    for(let j=0;j<rep;j++){
+      const start=performance.now();result=solveODE(problem,strategy);samples.push(performance.now()-start);
+    }
+    samples.sort((a,b)=>a-b);out[key]={...result,elapsedMs:samples[Math.floor(samples.length/2)]};
+  }
+  return out;
+}
+function convergenceStudy(spec){
+  const data={};
+  for(const n of [5,10,20])data[n]=solveAll({...spec,n});
+  const ratios={};
+  for(const key of Object.keys(strategies)){
+    ratios[key]={"5→10":data[5][key].endError/data[10][key].endError,
+      "10→20":data[10][key].endError/data[20][key].endError};
+  }
+  return {data,ratios};
+}
+function stabilityStudy(){
+  const data={};
+  for(const n of [5,10,20])data[n]=solveODE({...STABILITY,f:(x,y)=>-20*y,exact:STABILITY.expected,n},strategies.euler);
+  return data;
+}
+/** RK4 для двовимірної системи Лотки–Вольтерри (бонус). */
+function lotkaVolterra({alpha=1.5,beta=1,gamma=3,delta=1,x0=10,y0=5,tEnd=10,n=1200}={}){
+  if([alpha,beta,gamma,delta,x0,y0,tEnd].some(v=>!Number.isFinite(v))||x0<=0||y0<=0||tEnd<=0||!Number.isInteger(n)||n<1||n>10000)throw Error('Неправильні параметри моделі хижак–жертва.');
+  const f=(x,y)=>[alpha*x-beta*x*y,delta*x*y-gamma*y];
+  const h=tEnd/n,pts=[{t:0,x:x0,y:y0}],adv=(v,k,q)=>[v[0]+q*k[0],v[1]+q*k[1]];
+  let v=[x0,y0];
+  for(let i=0;i<n;i++){
+    const k1=f(...v), k2=f(...adv(v,k1,h/2)),k3=f(...adv(v,k2,h/2)),k4=f(...adv(v,k3,h));
+    v=[v[0]+h*(k1[0]+2*k2[0]+2*k3[0]+k4[0])/6,
+       v[1]+h*(k1[1]+2*k2[1]+2*k3[1]+k4[1])/6];
+    if(!v.every(Number.isFinite))throw Error('Модель Лотки–Вольтерри нестабільна для обраних параметрів.');
+    pts.push({t:h*(i+1),x:v[0],y:v[1]});
+  }
+  return pts;
+}
+
+/** Захищений парсер математичних формул без eval(), Function() чи сторонніх залежностей. */
+const funcs={sin:Math.sin,cos:Math.cos,tan:Math.tan,exp:Math.exp,log:Math.log,ln:Math.log,sqrt:Math.sqrt,abs:Math.abs,atan:Math.atan};
+function compileExpression(source,{allowY=true}={}){
+  const text=String(source).trim();if(!text||text.length>180)throw Error('Вкажіть формулу (до 180 символів).');
+  const tokens=[];let i=0;
+  while(i<text.length){
+    if(/\s/.test(text[i])){i++;continue;}
+    const v=text.slice(i);
+    const num=v.match(/^(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?/);
+    if(num){tokens.push({type:'number',v:Number(num[0])});i+=num[0].length;continue;}
+    const name=v.match(/^[a-zA-Z_][a-zA-Z_0-9]*/);
+    if(name){tokens.push({type:'name',v:name[0].toLowerCase()});i+=name[0].length;continue;}
+    if('()+-*/^'.includes(text[i])){tokens.push({type:text[i],v:text[i]});i++;continue;}
+    throw Error(`Недопустимий символ «${text[i]}». Дозволено x, y, exp, sin, cos, числа та арифметичні операції.`);
+  }
+  if(tokens.length>120)throw Error('Формула надто складна.');
+  let pos=0,depth=0;
+  function peek(t){return tokens[pos]?.type===t;}
+  function eat(t){if(!peek(t))throw Error(`Очікувався символ ${t}.`);return tokens[pos++];}
+  function enter(fn){if(++depth>80)throw Error('Занадто складна вкладеність формули.');try{return fn();}finally{depth--;}}
+  function primary(){return enter(()=>{
+    if(peek('number'))return {t:'const',v:eat('number').v};
+    if(peek('(')){eat('(');const v=sum();eat(')');return v;}
+    if(peek('name')){
+      const name=eat('name').v;
+      if(name==='x'||(allowY&&name==='y'))return {t:'var',v:name};
+      if(name==='pi'||name==='e')return {t:'const',v:name==='pi'?Math.PI:Math.E};
+      if(Object.hasOwn(funcs,name)){
+        eat('(');const arg=sum();eat(')');return {t:'call',v:name,arg};
+      }
+      throw Error(`Невідома змінна або функція: ${name}.`);
+    }
+    throw Error('Очікувалося число, змінна або дужки.');
+  });}
+  function power(){let a=primary();if(peek('^')){eat('^');a={t:'binary',v:'^',left:a,right:unary()};}return a;}
+  function unary(){if(peek('-')||peek('+')){const op=tokens[pos++].type;return {t:'unary',v:op,arg:unary()};}return power();}
+  function product(){let a=unary();while(peek('*')||peek('/')){const op=tokens[pos++].type;a={t:'binary',v:op,left:a,right:unary()};}return a;}
+  function sum(){let a=product();while(peek('+')||peek('-')){const op=tokens[pos++].type;a={t:'binary',v:op,left:a,right:product()};}return a;}
+  const tree=sum();if(pos!==tokens.length)throw Error('Зайві символи після формули.');
+  const walk=(node,x,y)=>{
+    if(node.t==='const')return node.v;
+    if(node.t==='var')return node.v==='x'?x:y;
+    if(node.t==='unary')return (node.v==='-'?-1:1)*walk(node.arg,x,y);
+    if(node.t==='call')return funcs[node.v](walk(node.arg,x,y));
+    const a=walk(node.left,x,y),b=walk(node.right,x,y);
+    switch(node.v){case '+':return a+b;case '-':return a-b;case '*':return a*b;case '/':return a/b;case '^':return Math.pow(a,b);}
+    throw Error('Непідтримувана операція.');
+  };
+  return (x,y)=>{const result=walk(tree,x,y);if(!Number.isFinite(result))throw Error(`Формула повернула некоректне значення при x=${x.toFixed(3)}.`);return result;};
+}
+
+/** Динамічні SVG: межі X/Y з усіх показуваних кривих, без ручних значень. */
+const COLORS={euler:'#EA865B',heun:'#169CA1',rk4:'#8066D9',exact:'#1F3151'};
+const chartFmt=(v)=>{if(!Number.isFinite(v))return '—';if(v!==0&&(Math.abs(v)>1e5||Math.abs(v)<1e-3))return v.toExponential(2);return Number(v.toFixed(3)).toLocaleString('uk-UA');};
+function bounds(values){
+  const a=values.filter(Number.isFinite);if(!a.length)return [-1,1];
+  let mn=Math.min(...a),mx=Math.max(...a);
+  const span=mx-mn||Math.max(0.01,Math.abs(mx)*.12);
+  return [mn-span*.1,mx+span*.1];
+}
+const curve=(points,tx,ty)=>points.filter(p=>Number.isFinite(p.x)&&Number.isFinite(p.y)).map((p,i)=>(i?'L':'M')+tx(p.x).toFixed(2)+' '+ty(p.y).toFixed(2)).join(' ');
+function paint(node,lines,{small=false,xLabel='x',yLabel='y',dot=true}={}){
+  const W=small?560:1000,H=small?265:395;
+  const pad={left:small?69:91,right:small?19:35,top:small?23:28,bottom:small?38:50};
+  const all=lines.flatMap(l=>l.points);
+  const [xmin,xmax]=bounds(all.map(p=>p.x)),[ymin,ymax]=bounds(all.map(p=>p.y));
+  const wd=W-pad.left-pad.right,ht=H-pad.top-pad.bottom;
+  const tx=x=>pad.left+(x-xmin)/(xmax-xmin)*wd,ty=y=>pad.top+(ymax-y)/(ymax-ymin)*ht;
+  let str='';
+  for(let i=0;i<=5;i++){
+    const y=pad.top+i*ht/5,val=ymax-i*(ymax-ymin)/5;
+    str+=`<line x1="${pad.left}" x2="${W-pad.right}" y1="${y}" y2="${y}" stroke="#E5EAF2" stroke-dasharray="3 5"/><text x="${pad.left-10}" y="${y+4}" text-anchor="end" class="tick">${chartFmt(val)}</text>`;
+    const x=pad.left+i*wd/5,xx=xmin+i*(xmax-xmin)/5;
+    str+=`<line x1="${x}" x2="${x}" y1="${pad.top}" y2="${H-pad.bottom}" stroke="#E5EAF2" stroke-dasharray="3 5"/><text x="${x}" y="${H-pad.bottom+20}" text-anchor="middle" class="tick">${chartFmt(xx)}</text>`;
+  }
+  str+=`<text x="${W-pad.right-3}" y="${H-5}" text-anchor="end" class="axis">${xLabel}</text><text x="14" y="${pad.top-7}" class="axis">${yLabel}</text>`;
+  lines.forEach(l=>{
+    const d=curve(l.points,tx,ty);
+    if(d)str+=`<path d="${d}" fill="none" stroke="${l.color||COLORS[l.id]||'#000'}" stroke-width="${small?2.4:3.2}" stroke-dasharray="${l.dash?'7 5':'none'}" stroke-linecap="round" stroke-linejoin="round"/>`;
+    if(dot && !l.noDots){
+      const step=l.points.length>80?Math.ceil(l.points.length/80):1;
+      l.points.filter((p,i)=>i%step===0).forEach(p=>str+=`<circle cx="${tx(p.x)}" cy="${ty(p.y)}" r="${small?3:4.5}" fill="${l.color||COLORS[l.id]||'#000'}" stroke="#fff" stroke-width="1.4"><title>x=${chartFmt(p.x)}, y=${chartFmt(p.y)}</title></circle>`);
+    }
+  });
+  node.innerHTML=`<svg viewBox="0 0 ${W} ${H}" class="graph-svg" role="img" aria-label="Динамічний чисельний графік" xmlns="http://www.w3.org/2000/svg">${str}</svg>`;
+}
+function renderPlot(node,results,{kind='solution',exact=null,method='all',limit=null,small=false,x0=0,xEnd=1}={}){
+  const lines=[];
+  if(kind==='solution' && exact){
+    const samples=Array.from({length:301},(_,i)=>{const x=x0+(xEnd-x0)*i/300;return {x,y:exact(x)};});
+    lines.push({id:'exact',points:samples,noDots:true,dash:true});
+  }
+  for(const [key,v] of Object.entries(results)){
+    if(method!=='all' && key!==method)continue;
+    let points=v.nodes;
+    if(limit!==null)points=points.slice(0,Math.max(1,limit+1));
+    const arr=points.map(p=>({x:p.x,y:kind==='solution'?p.y:p.error})).filter(p=>p.y!==null && Number.isFinite(p.y));
+    if(arr.length)lines.push({id:key,points:arr});
+  }
+  if(!lines.length){node.innerHTML='<div class="empty-state">Для графіка похибки потрібен відомий точний розв’язок.</div>';return;}
+  paint(node,lines,{small,yLabel:kind==='solution'?'y':'|e|'});
+}
+function renderPhase(node,trajectory){
+  paint(node,[{id:'rk4',points:trajectory.map(p=>({x:p.x,y:p.y})),noDots:true}],{xLabel:'жертви',yLabel:'хижаки',dot:false});
+}
+
+
+
+
+const $=s=>document.querySelector(s);
+const state={n:5,method:'all',problem:null,results:null,animationId:0,animatedStep:null,source:'variant'};
+const fmt=(n,d=6)=>Number.isFinite(n)?(n===0?'0':Math.abs(n)<.001?n.toExponential(3):Number(n.toFixed(d)).toLocaleString('uk-UA',{maximumFractionDigits:d})):'—';
+function showError(err){$('#form-error').textContent=err?.message||String(err||'');}
+function saveForm(p){$('#fx').value=p.fText;$('#exact').value=p.exactText;$('#x0').value=p.x0;$('#y0').value=p.y0;$('#xend').value=p.xEnd;$('#exact-on').checked=true;}
+function readProblem(){
+  const fText=$('#fx').value.trim(),exactText=$('#exact').value.trim();
+  const x0=Number($('#x0').value),y0=Number($('#y0').value),xEnd=Number($('#xend').value);
+  if(!['#x0','#y0','#xend'].every(s=>$(s).value.trim()!==''))throw Error('Вкажіть початкову умову та межі інтервалу.');
+  const f=compileExpression(fText),exact=$('#exact-on').checked?compileExpression(exactText,{allowY:false}):null;
+  const p={f,exact,x0,y0,xEnd,n:state.n,fText,exactText};
+  solveAll(p); // Перевірка до заміни поточного стану; повідомлення про невірні дані.
+  return p;
+}
+function pickPreset(key){
+  state.source=key;
+  saveForm(key==='stability'?STABILITY:VARIANT);
+  recalc();
+}
+function cancelAnimation(){state.animationId++;state.animatedStep=null;$('#animation-status').textContent='Готово до дослідження';}
+function getForN(n){return solveAll({...state.problem,n});}
+function updateMetrics(){
+  $('#stat-n').textContent=String(state.n);
+  $('#stat-h').textContent=fmt((state.problem.xEnd-state.problem.x0)/state.n,4);
+  $('#stat-euler').textContent=fmt(state.results.euler.endError);
+  $('#stat-rk4').textContent=fmt(state.results.rk4.endError);
+  $('#formula-current').textContent=`y′ = ${state.problem.fText},  y(${fmt(state.problem.x0)}) = ${fmt(state.problem.y0)}`;
+  $('#stability-note').hidden=state.source!=='stability';
+}
+function plotMain(){
+  const limit=state.animatedStep;
+  renderPlot($('#main-graph'),state.results,{exact:state.problem.exact,method:state.method,limit,x0:state.problem.x0,xEnd:state.problem.xEnd});
+  if(state.method==='rk4' && limit!==null && limit>0){
+    const stage=state.results.rk4.stages[limit-1];
+    $('#stage-panel').hidden=false;
+    $('#stage-k1').textContent=fmt(stage.k1);$('#stage-k2').textContent=fmt(stage.k2);
+    $('#stage-k3').textContent=fmt(stage.k3);$('#stage-k4').textContent=fmt(stage.k4);
+    $('#stage-title').textContent=`РК4 — крок ${limit} із ${state.n}`;
+  } else $('#stage-panel').hidden=true;
+}
+function drawMinis(){
+  $('#six-graphs').innerHTML='';
+  for(const n of [5,10,20]){
+    const results=getForN(n);
+    for(const kind of ['solution','error']){
+      const card=document.createElement('article');card.className='mini-card';
+      card.innerHTML=`<div class="mini-head"><span class="mini-label">${kind==='solution'?'Розв’язок':'Абсолютна похибка'}</span><strong>${n} кроків</strong></div><div class="mini-graph"></div>`;
+      $('#six-graphs').appendChild(card);
+      renderPlot(card.querySelector('.mini-graph'),results,{kind,small:true,exact:state.problem.exact,x0:state.problem.x0,xEnd:state.problem.xEnd});
+    }
+  }
+}
+function drawTables(){
+  const rows=[];for(const n of [5,10,20]){
+    const data=benchmark({...state.problem,n},25);
+    for(const method of ['euler','heun','rk4']){
+      const v=data[method];rows.push(`<tr class="${n===state.n?'selected':''}"><td>${n}</td><td>${v.method}</td><td>${fmt(v.maxError)}</td><td>${fmt(v.endError)}</td><td>${fmt(v.elapsedMs,5)}</td></tr>`);
+    }
+  }
+  $('#comparison-body').innerHTML=rows.join('');
+  if(state.problem.exact){
+    const study=convergenceStudy(state.problem);let str='';
+    for(const [id,s] of Object.entries(strategies)){
+      const pair=study.ratios[id];
+      str+=`<tr><td>${s.name}</td><td>${fmt(pair['5→10'],3)}</td><td>${fmt(pair['10→20'],3)}</td><td>${2**s.order}</td></tr>`;
+    }
+    $('#order-body').innerHTML=str;
+    $('#order-note').textContent='Відношення обчислено за похибкою у кінцевій точці. Для достатньо малого h воно наближається до 2ᵖ.';
+  } else {
+    $('#order-body').innerHTML='<tr><td colspan="4">Потрібен точний розв’язок для розрахунку порядку.</td></tr>';
+    $('#order-note').textContent='Для власної функції можна ввести відомий аналітичний розв’язок.';
+  }
+  const stable=[5,10,20].map(n=>{const h=1/n,z=1-20*h;return `<tr><td>${n}</td><td>${fmt(h,2)}</td><td>${fmt(z,0)}</td><td>${fmt(z**n,0)}</td><td>${Math.abs(z)>1?'Розбіжність':Math.abs(z)===1?'Осциляції':'Стійкий'}</td></tr>`;});
+  $('#stability-body').innerHTML=stable.join('');
+}
+function recalc(){
+  try{
+    const newProblem=readProblem();cancelAnimation();state.problem=newProblem;state.results=solveAll(newProblem);
+    showError('');updateMetrics();plotMain();drawMinis();drawTables();$('#main-title').textContent=`Основний графік · ${state.n} кроків`;
+    $('#preset-label').textContent=state.source==='variant'?'Варіант № 1':state.source==='stability'?'Тест стійкості':'Власне рівняння';
+  }catch(e){showError(e);}
+}
+function animate(){
+  if(!state.problem)return;
+  cancelAnimation();const id=state.animationId,start=performance.now(),duration=state.n*250+200;
+  state.animatedStep=0;
+  function frame(t){
+    if(state.animationId!==id)return;
+    const n=Math.min(state.n,Math.floor(Math.max(0,t-start)/250));
+    if(state.animatedStep!==n){
+      state.animatedStep=n;plotMain();$('#animation-status').textContent=`Крок ${n} із ${state.n}`;
+    }
+    if(t-start<duration)requestAnimationFrame(frame);
+    else {state.animatedStep=state.n;plotMain();$('#animation-status').textContent='Анімацію завершено';}
+  }
+  requestAnimationFrame(frame);
+}
+function serializeCSV(){
+  const list=[];
+  list.push('Метод;Номер кроку;x;Чисельне y;Точне y;Абсолютна похибка');
+  for(const [id,result] of Object.entries(state.results))for(const p of result.nodes){
+    const exact=state.problem.exact?state.problem.exact(p.x):null;
+    list.push([id,p.i,p.x,p.y,exact??'',p.error??''].join(';'));
+  }
+  const blob=new Blob(['\ufeff'+list.join('\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`LR3_ODE_${state.n}_steps.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+}
+function initPhase(){
+  try{const pts=lotkaVolterra();renderPhase($('#phase-graph'),pts);$('#phase-status').textContent='РК4 · 1200 кроків · 10 одиниць часу';}
+  catch(e){$('#phase-status').textContent=e.message;}
+}
+function setSize(n){state.n=n;document.querySelectorAll('button[data-n]').forEach(b=>{const active=Number(b.dataset.n)===n;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active));});recalc();}
+document.querySelectorAll('button[data-n]').forEach(b=>b.addEventListener('click',()=>setSize(Number(b.dataset.n))));
+document.querySelectorAll('button[data-method]').forEach(b=>b.addEventListener('click',()=>{
+  state.method=b.dataset.method;document.querySelectorAll('button[data-method]').forEach(x=>{const yes=x.dataset.method===state.method;x.classList.toggle('active',yes);x.setAttribute('aria-pressed',String(yes));});cancelAnimation();plotMain();
+}));
+$('#preset-variant').addEventListener('click',()=>pickPreset('variant'));
+$('#preset-stability').addEventListener('click',()=>pickPreset('stability'));
+$('#apply').addEventListener('click',()=>{state.source='custom';recalc();});
+$('#fx').addEventListener('input',()=>{if(state.source!=='custom'){$('#exact-on').checked=false;state.source='custom';}});
+$('#animate').addEventListener('click',animate);
+$('#stop').addEventListener('click',()=>{cancelAnimation();plotMain();});
+$('#csv').addEventListener('click',()=>{if(state.results)serializeCSV();});
+$('#export-json').addEventListener('click',()=>{
+  const obj={f:$('#fx').value,exact:$('#exact').value,useExact:$('#exact-on').checked,x0:Number($('#x0').value),y0:Number($('#y0').value),xEnd:Number($('#xend').value),n:state.n};
+  const blob=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='lr3_problem.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+});
+$('#file-json').addEventListener('change',async e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  try{
+    if(file.size>100000)throw Error('Файл JSON завеликий.');
+    const data=JSON.parse(await file.text());
+    if(typeof data.f!=='string'||![data.x0,data.y0,data.xEnd].every(Number.isFinite))throw Error('JSON повинен містити f, x0, y0, xEnd.');
+    $('#fx').value=data.f;$('#exact').value=typeof data.exact==='string'?data.exact:'';$('#exact-on').checked=!!data.useExact;
+    $('#x0').value=data.x0;$('#y0').value=data.y0;$('#xend').value=data.xEnd;
+    state.source='custom';if([5,10,20].includes(data.n))setSize(data.n);else recalc();
+  }catch(err){showError(err);}finally{e.target.value='';}
+});
+initPhase();pickPreset('variant');
+
+</script></body></html>

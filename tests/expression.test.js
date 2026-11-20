@@ -1,0 +1,14 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {compileExpression} from '../src/expression.js';
+const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-10,`${a} != ${b}`);
+test('f(x,y) варіанта',()=>close(compileExpression('y + exp(x)')(1,2),2+Math.E));
+test('точний розв’язок через формулу без y',()=>close(compileExpression('(x + 1) * exp(x)',{allowY:false})(1),2*Math.E));
+test('стійкість -20*y',()=>close(compileExpression('-20*y')(0,2),-40));
+test('унарний мінус має нижчий пріоритет за степінь',()=>close(compileExpression('-x^2')(3,0),-9));
+test('степінь правоасоціативний',()=>close(compileExpression('2^3^2')(0,0),512));
+test('корені, тригонометрія, число pi',()=>close(compileExpression('sqrt(9)+sin(pi/2)')(1,0),4));
+test('неприпустимий код забороняється',()=>assert.throws(()=>compileExpression('alert(1)'),/Невідома/));
+test('символи JS-коду забороняються',()=>assert.throws(()=>compileExpression('window.location'),/Недопустимий/));
+test('змінну y не можна вводити у формулу точного розв’язку',()=>assert.throws(()=>compileExpression('x+y',{allowY:false}),/Невідома/));
+test('ділення на нуль відхиляється під час виклику',()=>assert.throws(()=>compileExpression('1/(x-x)')(3,0),/некоректне/));
+test('неповні дужки відхиляються',()=>assert.throws(()=>compileExpression('(x+1')(0,0),/Очікувався/));
+test('написання через e^x',()=>close(compileExpression('y + e^x')(0,1),2));
